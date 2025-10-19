@@ -104,7 +104,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <form id="contactForm">
+                            <form action="https://formspree.io/f/mrgvvvyp" method="POST"
                                 <input type="text" name="name" placeholder="Your Name" required>
                                 <input type="email" name="email" placeholder="Your Email" required>
                                 <input type="text" name="subject" placeholder="Subject" required>
@@ -156,26 +156,8 @@
     <script src="js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-     <script>
-            document.getElementById("contactForm").addEventListener("submit", function(e) {
-             e.preventDefault();
-
-             const formData = new FormData(this);
-
-             fetch("send-mail.php", {
-           method: "POST",
-             body: formData
-             })
-             .then(response => response.text())
-             .then(data => {
-               document.getElementById("formResponse").innerText = data;
-               this.reset();
-                 })
-             .catch(error => {
-           document.getElementById("formResponse").innerText = "Error sending message.";
-             });
-            });
-            </script>
+     
 </body>
 </html>
+
 
