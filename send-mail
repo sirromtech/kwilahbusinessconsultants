@@ -175,5 +175,7 @@
            document.getElementById("formResponse").innerText = "Error sending message.";
              });
             });
+            </script>
 </body>
 </html>
+
