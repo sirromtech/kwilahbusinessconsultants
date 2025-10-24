@@ -247,8 +247,8 @@ h6,
 
 .logo-track {
   display: flex;
-  gap: 40px;
-  animation: scrollLogos 30s linear infinite;
+  gap: 20px;
+  animation: scrollLogos 7s linear infinite;
 }
 
 .logo-item {
@@ -577,7 +577,11 @@ h6,
     background: var(--primary);
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
-
+.testimonial-text {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
 
 /*** Team ***/
 .team-item .btn {
@@ -697,3 +701,4 @@ h6,
   opacity: 1;
   transform: translateY(0);
 }
+
