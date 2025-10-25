@@ -247,7 +247,7 @@ h6,
 
 .logo-track {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   animation: scrollLogos 7s linear infinite;
 }
 
@@ -701,4 +701,5 @@ h6,
   opacity: 1;
   transform: translateY(0);
 }
+
 
