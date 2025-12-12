@@ -1,0 +1,239 @@
+/* Core layout */
+.hero-christmas{
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg,#b30000 0%, #ff6b6b 60%);
+  color: #fff;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 420px;
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Content */
+.hero-content{
+  max-width: 640px;
+  z-index: 5;
+}
+.hero-content h1{
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  margin: 0 0 .6rem 0;
+  letter-spacing: -0.5px;
+}
+.hero-sub{
+  font-size: clamp(.95rem, 1.6vw, 1.15rem);
+  margin: 0 0 1.2rem 0;
+  opacity: .95;
+}
+.cta{
+  display: inline-block;
+  background: #0033cc;
+  color: #fff;
+  padding: .6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+/* Decorations container */
+.decorations{
+  position: absolute;
+  right: 2rem;
+  bottom: 1.2rem;
+  width: min(48%, 520px);
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Tree building blocks */
+.tree{
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  width: 220px;
+  height: 320px;
+  transform-origin: center bottom;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
+}
+
+/* Triangle layers */
+.tree-top, .tree-mid, .tree-base{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 90px solid #0b6b2f;
+  transition: transform .6s ease;
+}
+.tree-mid{
+  top: 60px;
+  border-left-width: 110px;
+  border-right-width: 110px;
+  border-bottom-width: 110px;
+  border-bottom-color: #0f7f36;
+}
+.tree-base{
+  top: 150px;
+  border-left-width: 140px;
+  border-right-width: 140px;
+  border-bottom-width: 130px;
+  border-bottom-color: #138f3b;
+}
+.tree-trunk{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -6px;
+  width: 48px;
+  height: 48px;
+  background: #6b3b1f;
+  border-radius: 6px;
+  box-shadow: inset 0 -6px 0 rgba(0,0,0,.12);
+}
+
+/* Star */
+.star{
+  position: absolute;
+  left: 50%;
+  top: -12px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid #ffd54a;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.2));
+}
+.star::after{
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 6px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 20px solid #ffd54a;
+}
+
+/* Ornaments and twinkle */
+.ornaments .orn{
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  animation: twinkle 2.8s infinite ease-in-out;
+}
+.orn.o1{ left: 46%; top: 40%; background: #ff3b30; animation-delay: .1s;}
+.orn.o2{ left: 34%; top: 62%; background: #ffd54a; animation-delay: .4s;}
+.orn.o3{ left: 58%; top: 72%; background: #00aaff; animation-delay: .8s;}
+.orn.o4{ left: 70%; top: 50%; background: #ff6ec7; animation-delay: 1.1s;}
+.orn.o5{ left: 52%; top: 56%; background: #ffffff; animation-delay: 1.6s;}
+
+@keyframes twinkle{
+  0%,100%{ transform: scale(.9); opacity: .85; filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+  50%{ transform: scale(1.25); opacity: 1; filter: drop-shadow(0 6px 12px rgba(255,255,255,.12)); }
+}
+
+/* Santa sleigh */
+/* container should be positioned relative in the hero */
+/* santa container (keep as-is) */
+.santa-wrap{
+  position: absolute;
+  top: 6%;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 6;
+  overflow: visible;
+}
+
+/* GIF element — base rules */
+.santa-gif{
+  position: absolute;
+  top: 6vh;                       /* vertical path */
+  right: -20vw;                   /* start off-screen to the right */
+  width: 260px;                   /* desktop base */
+  height: auto;
+  transform: translateX(0) translateY(0) rotate(0deg);
+  will-change: transform, right, opacity;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
+  animation: santa-fly-rtl 12s linear infinite;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: width .25s ease, top .25s ease;
+}
+
+/* Right-to-left flight path (keep your keyframes) */
+@keyframes santa-fly-rtl{
+  0%{
+    right: -20vw;
+    transform: translateY(0) rotate(-4deg);
+    opacity: 0;
+  }
+  6%{ opacity: 1; }
+  40%{
+    right: 40vw;
+    transform: translateY(-4vh) rotate(-6deg);
+  }
+  70%{
+    right: 110vw;
+    transform: translateY(-8vh) rotate(-2deg);
+  }
+  100%{
+    right: 160vw;
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive sizing: make the GIF larger as the screen gets smaller */
+@media (max-width: 1200px){
+  .santa-gif{
+    width: 300px;
+    animation-duration: 11s;
+    top: 7vh;
+  }
+}
+
+@media (max-width: 900px){
+  .santa-gif{
+    width: 360px;               /* larger on tablets / small laptops */
+    animation-duration: 10s;
+    top: 8vh;
+    right: -18vw;
+  }
+}
+
+/* Small phones and very narrow viewports: largest size */
+@media (max-width: 560px){
+  .santa-gif{
+    /* min 320px, prefer 46vw, max 640px — grows on small screens */
+    width: clamp(320px, 46vw, 640px);
+    animation-duration: 9s;
+    top: 10vh;
+    right: -12vw;
+  }
+}
+
+/* Keep reduced-motion support */
+@media (prefers-reduced-motion: reduce){
+  .santa-gif{
+    animation: none !important;
+    right: 20vw !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
